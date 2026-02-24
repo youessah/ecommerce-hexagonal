@@ -1,0 +1,28 @@
+# Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# Angular
+node_modules/
+dist/
+.angular/
+.npm/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project/
+.classpath/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Misc
+.mvn/wrapper/maven-wrapper.jar

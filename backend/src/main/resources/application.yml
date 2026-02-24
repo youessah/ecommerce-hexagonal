@@ -1,0 +1,56 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ecommerce-hexagonal
+
+  # H2 pour dev (commenter pour MySQL)
+  datasource:
+    url: jdbc:mysql://localhost:3306/ecommercedb
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password:
+    jpa:
+      hibernate:
+        ddl-auto: update
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  # MongoDB
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/ecommerce_mongo
+
+  # JSON local
+  json-repository:
+    file-path: ./data/users.json
+
+# JWT
+jwt:
+  secret: ecommerce-hexagonal-super-secret-key-2024-minimum-256-bits
+  expiration: 86400000  # 24h
+
+# Adapter actif pour l'authentification: mysql | mongo | json
+auth:
+  repository-type: mysql
+
+# Adapter actif pour les produits/commandes: mysql | mongo
+product:
+  repository-type: mysql
+
+logging:
+  level:
+    com.ecommerce: DEBUG
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
