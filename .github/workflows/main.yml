@@ -27,7 +27,7 @@ jobs:
 
       # 4️⃣ Build Maven (Correction : 'demo' en minuscules)
       - name: Build with Maven
-        run: mvn -f demo/pom.xml clean verify
+        run: mvn -f ecommerce-hexagonal/pom.xml clean verify
 
       # 5️⃣ Login DockerHub
       - name: Login DockerHub
