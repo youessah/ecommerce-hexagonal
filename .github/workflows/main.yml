@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Debug arborescence (Regardez bien le résultat de cette étape dans GitHub !)
+      # 2️⃣ Debug structure (important au début)
       - name: Show structure
         run: ls -R
 
@@ -25,9 +25,9 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      # 4️⃣ Build Maven (Correction : 'demo' en minuscules)
+      # 4️⃣ Build Maven
       - name: Build with Maven
-        run: mvn -f ecommerce-hexagonal/pom.xml clean verify
+        run: mvn clean verify
 
       # 5️⃣ Login DockerHub
       - name: Login DockerHub
@@ -36,9 +36,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # 6️⃣ Build Docker image (Correction : 'demo' en minuscules)
+      # 6️⃣ Build Docker image
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-hexagonal:latest ecommerce-hexagonal
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-hexagonal:latest .
 
       # 7️⃣ Push image
       - name: Push Docker image
